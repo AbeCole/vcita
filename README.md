@@ -13,7 +13,10 @@ Vcita.new('VCITA_API_TOKEN_HERE')
 ```
 
 ```ruby
-Vcita.request
+Vcita.profile
+Vcita.clients
+Vcita.appointments
+Vcita.payments
 ```
 
 ## Installation
