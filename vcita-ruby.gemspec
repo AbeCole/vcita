@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Vcita::VERSION
   s.authors     = ["AbeCole"]
   s.email       = ["me@abecole.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Vcita-ruby."
-  s.description = "TODO: Description of Vcita-ruby."
+  s.homepage    = "http://abecole.com"
+  s.summary     = "Vcita.com API Ruby library."
+  s.description = "Vcita.com API Ruby library."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
