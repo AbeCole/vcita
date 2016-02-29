@@ -1,5 +1,5 @@
-# Vcita
-Vcita.com API integration
+# Vcita-ruby
+Vcita.com API Ruby integration
 
 ## Usage
 Install and use, more documentation should be created before this is released.
@@ -10,7 +10,7 @@ free to hassle Abe Cole at me@abecole.com.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'vcita'
+gem 'vcita-ruby'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install vcita
+$ gem install vcita-ruby
 ```
 
 ## Contributing
