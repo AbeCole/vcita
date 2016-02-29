@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    vcita (0.1.0)
+    vcita-ruby (0.1.0)
       rails (>= 5.0.0.beta3, < 5.1)
 
 GEM
@@ -115,7 +115,7 @@ PLATFORMS
 
 DEPENDENCIES
   sqlite3
-  vcita!
+  vcita-ruby!
 
 BUNDLED WITH
    1.11.2
