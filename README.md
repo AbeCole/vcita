@@ -19,6 +19,10 @@ Vcita.appointments
 Vcita.payments
 ```
 
+```ruby
+Vcita.create_appointment({client_id: "q123w123", ...})
+```
+
 ## Installation
 Add this line to your application's Gemfile:
 
