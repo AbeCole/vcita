@@ -1,5 +1,6 @@
 module Vcita
   @@api_token
+  API_URL = 'https://api2.vcita.com/v2/'
 
   def self.new(api_token)
     @@api_token = api_token
@@ -26,18 +27,51 @@ module Vcita
     self.send_request('payments')
   end
 
-  private    
+  def self.subscribe(entity, event, callback_url)
+    data = {
+      event: "#{entity}/#{event}",
+      target_url: callback_url
+    }
+
+    self.send_subscribe(data)
+  end
+
+  def self.unsubscribe(callback_url)
+    data = {
+      target_url: callback_url
+    }
+
+    self.send_subscribe(data, 'unsubscribe')
+  end
+
+  private
     def self.send_request(endpoint, data = nil)
       require 'net/http'
       require 'json'
 
-      uri = URI("https://api2.vcita.com/v2/#{endpoint}")
+      uri = URI("#{API_URL}#{endpoint}")
       unless data.nil?
         request = Net::HTTP::Post.new(uri)
         request.set_form_data(data)
       else
         request = Net::HTTP::Get.new(uri)
       end
+      request["Authorization"] = "Token #{@@api_token}"
+
+      res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) do |http|
+        http.request(request)
+      end
+
+      JSON.parse(res.body)
+    end
+
+    def self.send_subscribe(data, type = 'subscribe')
+      require 'net/http'
+      require 'json'
+
+      uri = URI("#{Vcita::API_URL}subscriptions/standard/#{type}")
+      request = Net::HTTP::Post.new(uri)
+      request.set_form_data(data)
       request["Authorization"] = "Token #{@@api_token}"
 
       res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) do |http|
