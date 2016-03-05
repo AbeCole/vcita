@@ -1,6 +1,7 @@
 module Vcita
   @@api_token
   API_URL = 'https://api2.vcita.com/v2/'
+  API_HOOK_URL = 'https://hook.vcita.com/v1/'
 
   def self.new(api_token)
     @@api_token = api_token
@@ -69,7 +70,9 @@ module Vcita
       require 'net/http'
       require 'json'
 
-      uri = URI("#{Vcita::API_URL}subscriptions/standard/#{type}")
+      uri = URI("#{Vcita::API_HOOK_URL}subscriptions/standard/#{type}")
+      puts "VCITA DATA"
+      puts data
       request = Net::HTTP::Post.new(uri)
       request.set_form_data(data)
       request["Authorization"] = "Token #{@@api_token}"
@@ -77,7 +80,7 @@ module Vcita
       res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) do |http|
         http.request(request)
       end
-
+      return res.body
       JSON.parse(res.body)
     end
 end
