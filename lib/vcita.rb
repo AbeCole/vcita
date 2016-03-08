@@ -80,9 +80,11 @@ module Vcita
         http.request(request)
       end
 
-      response[:response] = res.body
-      response[:uri] = uri
-      response[:data] = data.to_json
+      response = {
+        :response => res.body,
+        :uri => uri,
+        :data => data.to_json
+      }
       response
     end
 end
