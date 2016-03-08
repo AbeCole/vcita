@@ -74,13 +74,11 @@ module Vcita
       request = Net::HTTP::Post.new(uri)
       request["Authorization"] = "Token #{@@api_token}"
       request["Content-Type"] = "application/json"
-      request.body(data.to_json)
+      request.body = data.to_json
 
       res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) do |http|
         http.request(request)
       end
-
-      return res.body
 
       JSON.parse(res.body)
     end
