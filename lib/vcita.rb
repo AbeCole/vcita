@@ -71,16 +71,17 @@ module Vcita
       require 'json'
 
       uri = URI("#{Vcita::API_HOOK_URL}subscriptions/standard/#{type}")
-      puts "VCITA DATA"
-      puts data
       request = Net::HTTP::Post.new(uri)
-      request.set_form_data(data)
       request["Authorization"] = "Token #{@@api_token}"
+      request["Content-Type"] = "application/json"
+      request.body(data.to_json)
 
       res = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) do |http|
         http.request(request)
       end
+
       return res.body
+
       JSON.parse(res.body)
     end
 end
