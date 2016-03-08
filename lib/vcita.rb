@@ -80,7 +80,7 @@ module Vcita
         http.request(request)
       end
 
-      response = JSON.parse(res.body)
+      response[:response] = res.body
       response[:uri] = uri
       response[:data] = data.to_json
       response
