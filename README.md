@@ -4,8 +4,8 @@ For more information on their API check http://developers.vcita.com/docs.
 
 ## Usage
 Install and use, more documentation should be created before this is released.
-If this is publicly available and the documentation hasn't been created you may
-want to hassle [Abe Cole](mailto:me@abecole.com).
+If this is publicly available then you are unfortunately on your own in this
+adventure, you can try to contact [Abe Cole](mailto:me@abecole.com).
 
 ```ruby
 require 'vcita'
